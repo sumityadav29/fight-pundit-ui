@@ -4,8 +4,9 @@
     pkgs.nodejs_20
   ];
   idx.extensions = [
-    "svelte.svelte-vscode"
-    "vue.volar"
+    "ms-vscode.vscode-typescript-next"
+    "dbaeumer.vscode-eslint"
+    "esbenp.prettier-vscode"
   ];
   idx.previews = {
     previews = {
