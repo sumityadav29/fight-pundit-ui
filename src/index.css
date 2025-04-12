@@ -1,0 +1,143 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 220 70% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 20% 95%;
+    --muted-foreground: 220 20% 45%;
+
+    --accent: 0 80% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 220 70% 30%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 30% 15%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 220 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 30% 20%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 30% 22%;
+    --sidebar-ring: 220 70% 45%;
+
+    /* Belt colors */
+    --belt-white: 0 0% 100%;
+    --belt-blue: 220 70% 50%;
+    --belt-purple: 270 50% 50%;
+    --belt-brown: 30 50% 40%;
+    --belt-black: 0 0% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .card-shadow {
+    @apply shadow-md hover:shadow-lg transition-shadow duration-200;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
+  }
+
+  .fight-card {
+    @apply relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-md transition-all duration-200 hover:shadow-lg;
+  }
+
+  .fight-card::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-accent to-primary transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+
+  .fight-card:hover::after {
+    @apply scale-x-100;
+  }
+
+  .btn-punch {
+    @apply relative overflow-hidden transition-all duration-300 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-punch::before {
+    content: '';
+    @apply absolute inset-0 bg-white/20 rounded-full scale-0 transition-transform duration-300;
+  }
+
+  .btn-punch:active::before {
+    @apply scale-100 opacity-0 transition-all duration-300;
+  }
+  
+  /* Belt level progress animation */
+  .belt-progress-animate {
+    animation: fill-up 1.5s ease-out forwards;
+  }
+  
+  @keyframes fill-up {
+    from {
+      height: 0%;
+    }
+    to {
+      height: var(--fill-height);
+    }
+  }
+  
+  /* Fighting style card effects */
+  .fight-style-card {
+    @apply relative overflow-hidden rounded-lg transition-all duration-300;
+  }
+  
+  .fight-style-card img {
+    @apply transition-transform duration-500;
+  }
+  
+  .fight-style-card:hover img {
+    @apply scale-110;
+  }
+  
+  .fight-style-card .content {
+    @apply absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-6 flex flex-col justify-end transform transition-transform duration-300;
+  }
+  
+  .fight-style-card:hover .content {
+    @apply bg-gradient-to-t from-black/90 via-black/50 to-transparent;
+  }
+}
